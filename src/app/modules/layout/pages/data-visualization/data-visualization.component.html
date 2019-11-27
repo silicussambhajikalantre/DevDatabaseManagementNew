@@ -1,0 +1,18 @@
+<div class="chartSection">
+  <div class="chartOuterBox">
+        <canvas baseChart #baseChart="base-chart" 
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+        <div *ngIf="barLoading" class="loader">
+          <h2>Loading...</h2>
+        </div>
+  </div>      
+
+<app-bar-chart-checkbox (checkBoxCheck)="getCheckBoxData($event)"></app-bar-chart-checkbox>
+</div>
+      
