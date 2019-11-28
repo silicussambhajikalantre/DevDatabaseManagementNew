@@ -37,18 +37,26 @@ export class GetUsersService {
     }
 
     newInsertUsers(formData) {
-      const yourName = formData.yourName;
-      const yourEmail = formData.yourEmail;
+      const firstName = formData.firstName;
+      const lastName = formData.lastName;
       const userName = formData.userName;
-      const gender = formData.gender;
+      const emailId = formData.emailId;
       const password = formData.password;
-      const url = `${this.apiUrl}/api/insert.php`;
-      return this._http.post(url, {
-        yourName,
-        yourEmail,
-        userName,
-        gender,
-        password
-       });
+      const confirmPassword = formData.confirmPassword;
+      const phoneNumber = formData.phoneNumber;
+
+    
+      // const url = `${this.apiUrl}/api/insert.php`;
+      // return this._http.post(url, {
+      //   yourName,
+      //   yourEmail,
+      //   userName,
+      //   gender,
+      //   password
+      //  });
     }
+
+    register(user: IUsers) {
+      return this.http.post(`${this.apiUrl}/users/register`, user);
+  }
 }

@@ -12,6 +12,8 @@ import { AuthGuard } from './core/guards/auth.guard'
 import { AppRoutingModule } from './app-routing.module';;
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
+import { RegisterComponent } from './modules/register/register.component';
+
 
 const CONFIG = new AuthServiceConfig([
   {
@@ -27,11 +29,11 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-
     HttpModule,
     HttpClientModule,
     FormsModule,

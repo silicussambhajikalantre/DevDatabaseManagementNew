@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   isErrorMsg: boolean = true;
   private user: SocialUser;
   private loggedIn: boolean;
+
   constructor(private _auth: AuthenticationService, private router: Router, private authService: AuthService,
     private route: ActivatedRoute) { }
     
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
       });
    // }
   }
+ 
   onSubmit() {
     //console.warn(this.loginForm.value);
     this._auth.getAuth(this.loginForm.value).subscribe(data => {
