@@ -1,0 +1,41 @@
+<app-movie-details #content *ngIf="movideDetails" [movideDetailsGet]="movideDetails"></app-movie-details>
+<table  class="table table-striped" [svData]="data" #sv="svDataTable" [svRowsOnPage]="20" svSortBy="name" svSortOrder="asc">
+    <thead>
+    <tr>
+        <th width="25%">
+            <sv-default-sorter by="title">Movie Title</sv-default-sorter>
+        </th>
+        <th>
+            <sv-default-sorter by="release_date">Release Date</sv-default-sorter>
+        </th>
+        
+        <th>
+            <sv-default-sorter by="vote_average">Rating</sv-default-sorter>
+        </th>
+        <th>
+            backdrop_path
+        </th>
+        <th>
+            poster_path
+        </th>
+        <th>Movie Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of sv.data">
+        <td><a (click)="movieDetails(item.id)">{{ item.title }} </a> </td>
+        <td>{{ item.release_date }}</td>
+        <td>{{ item.vote_average }}</td>
+        <td>{{ item.backdrop_path }}</td>
+        <td>{{ item.poster_path }}</td>
+        <td  width="50%">{{ item.overview }}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>

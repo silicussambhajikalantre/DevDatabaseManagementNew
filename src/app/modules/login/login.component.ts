@@ -19,9 +19,15 @@ export class LoginComponent implements OnInit {
   isErrorMsg: boolean = true;
   private user: SocialUser;
   private loggedIn: boolean;
+  pageNum: string;
+  sub: any;
 
-  constructor(private _auth: AuthenticationService, private router: Router, private authService: AuthService,
-    private route: ActivatedRoute) { }
+  constructor(
+    private _auth : AuthenticationService,
+    private authService: AuthService,
+    private router : Router, 
+    private route : ActivatedRoute,
+    ) { }
     
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
@@ -30,21 +36,26 @@ export class LoginComponent implements OnInit {
     this.authService.signOut(); 
    } 
   ngOnInit() {
-    //if (JSON.parse(localStorage.getItem('isLoggedInStatus'))) {
-      this.authService.authState.subscribe((user) => {
+    this.sub = this.route.queryParamMap
+       .subscribe(params => {
+          this.pageNum = params.get('logutValue');
+          if(this.pageNum === 'Sambhaji'){
+            this.signOut();
+            this.router.navigate(['login']);
+          }
+      });
+    this.authService.authState.subscribe((user) => {
         this.user = user;
         this.loggedIn = (user != null);
         if (this.loggedIn){
           this._auth.isLoggedIn(this.loggedIn, user.name, user.email, true);
           this.router.navigate(['dataVizualization']);
-       
         }
       });
-   // }
+   
   }
  
   onSubmit() {
-    //console.warn(this.loginForm.value);
     this._auth.getAuth(this.loginForm.value).subscribe(data => {
       if (data.Success) {
         this._auth.isLoggedIn(data.Success, data.name, data.email, false);

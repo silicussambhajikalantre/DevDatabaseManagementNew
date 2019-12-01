@@ -13,8 +13,8 @@ import { AppRoutingModule } from './app-routing.module';;
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
-
-
+import { DataTableModule } from 'ng-angular8-datatable';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const CONFIG = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -39,13 +39,14 @@ export function provideConfig() {
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,
-    AppRoutingModule
-
+    AppRoutingModule,
+    DataTableModule,
+    BrowserAnimationsModule,
   ],
   providers: [GetUsersService, AuthenticationService, AuthGuard, GetDataFromApiService, AuthService, {
     provide: AuthServiceConfig,
     useFactory: provideConfig
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

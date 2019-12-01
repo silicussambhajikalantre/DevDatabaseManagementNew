@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Response, Http } from '@angular/http';
+import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class GetDataFromApiService {
-
-  constructor() { }
+  wholeArray = [];
+  private movieDetails = new BehaviorSubject<any>('');
+  movieDetailsArray = this.movieDetails.asObservable();
+  constructor( private http: Http) { }
 
   getData(pageNumber) {
     return fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?page="+pageNumber+"&r=json&s=all", {
@@ -26,10 +30,11 @@ export class GetDataFromApiService {
   
       }
 
-      getDataFromTMDB(page) {
-        return fetch("https://api.themoviedb.org/3/discover/movie?api_key=6abdf9da1cf92c44b3fb376daaf55867&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+page);
+      getDataFromTMDB(page: number) {
+        return fetch("https://api.themoviedb.org/3/discover/movie?api_key=6abdf9da1cf92c44b3fb376daaf55867&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+page)
         }
 
+    
         //https://api.themoviedb.org/3/discover/movie?api_key=6abdf9da1cf92c44b3fb376daaf55867&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1
 
 
