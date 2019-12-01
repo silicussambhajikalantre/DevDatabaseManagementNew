@@ -33,7 +33,6 @@ export class MoviesListComponent implements OnInit {
   movieDetails(id){
      this.movideDetails = this.wholeArray.find(element => element.id === id);
      this.router.navigate(['movie-list/movie-details']);
-     
   }
   mayBe(page){
     this.getDataFromApi.getDataFromTMDB(page).then((response) => {
