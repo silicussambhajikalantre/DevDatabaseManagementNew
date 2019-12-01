@@ -13,7 +13,7 @@ const appRoutes: Routes = [
       children: [         
          { path: 'dataVizualization', component: DataVisualizationComponent, canActivate: [AuthGuard] },
          { path: 'movie-list', component: MoviesListComponent, canActivate: [AuthGuard] },
-         { path: 'movie-list/movie-details', component: MovieDetailsComponent, canActivate: [AuthGuard] },
+         { path: 'movie-list/:id', component: MovieDetailsComponent, canActivate: [AuthGuard] },
       ]
   }
 ];

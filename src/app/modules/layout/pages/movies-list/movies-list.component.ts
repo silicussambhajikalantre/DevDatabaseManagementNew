@@ -9,9 +9,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   providers: [NgbModalConfig, NgbModal]
 })
 export class MoviesListComponent implements OnInit {
-
+  public data: Array<any>;
   wholeArray = [];
-  data: any[];
+ // data: any[];
   movideDetails;
   constructor( 
     private getDataFromApi: GetDataFromApiService, 
@@ -25,14 +25,17 @@ export class MoviesListComponent implements OnInit {
       for ( let i = 1; i <= 100; i++ ) {
         this.mayBe(i);
       }
+      // const id = this.route.snapshot.paramMap.get("id");
+
+      // console.log(id);
     }
-    
     this.data = this.wholeArray;
-    console.log(this.data);
   }
   movieDetails(id){
-     this.movideDetails = this.wholeArray.find(element => element.id === id);
-     this.router.navigate(['movie-list/movie-details']);
+    this.getDataFromApi.myMethod(this.data);
+    this.movideDetails = this.wholeArray.find(element => element.id === id);
+    this.router.navigate(['movie-list/', id]);
+ 
   }
   mayBe(page){
     this.getDataFromApi.getDataFromTMDB(page).then((response) => {
