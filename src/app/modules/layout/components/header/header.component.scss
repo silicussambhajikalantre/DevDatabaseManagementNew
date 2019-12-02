@@ -2,7 +2,7 @@
     background: #064F74;
     color:#fff;
     .header-content {
-        padding: 0px 0px 200px 25px;
+        padding: 0px 0px 140px 25px;
     }
     .app-header-right{
         border-bottom-left-radius: 20px;
@@ -21,6 +21,49 @@
     }
    
 }
+
+.move-to-top{
+    margin-top: -7%;
+    background: transparent;
+}
+.dashboard-menus{
+    .nav-link{
+        font-size:16px;
+        color:white !important;
+        border-bottom:solid 5px transparent;
+        padding: 10px 20px;
+        &.active{border-bottom:solid 5px #12ABF8;}
+        -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+         
+            &:before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: 50%;
+                right: 50%;
+                bottom:-5px;
+                background: #12ABF8;
+                height: 5px;
+                -webkit-transition-property: left right;
+                transition-property: left right;
+                -webkit-transition-duration: 0.3s;
+                transition-duration: 0.3s;
+                -webkit-transition-timing-function: ease-out;
+                transition-timing-function: ease-out;
+            }
+            &:hover:before {
+                left: 5px;
+                right: 5px;
+            }
+    }   
+   
+}
+
 
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
 

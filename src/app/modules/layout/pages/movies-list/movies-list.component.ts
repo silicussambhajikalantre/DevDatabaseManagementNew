@@ -21,6 +21,7 @@ export class MoviesListComponent implements OnInit {
     private route : ActivatedRoute) { }
 
   ngOnInit() {
+    debugger;
     if(this.wholeArray.length === 0){
       for ( let i = 1; i <= 100; i++ ) {
         this.mayBe(i);

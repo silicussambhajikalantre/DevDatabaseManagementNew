@@ -1,3 +1,4 @@
+<div class="dashboard-wrapper mlr-35">
 <app-movie-details #content *ngIf="movideDetails" [movideDetailsGet]="movideDetails"></app-movie-details>
 <table  class="table table-striped" [svData]="data" #sv="svDataTable" [svRowsOnPage]="20" svSortBy="name" svSortOrder="asc">
     <thead>
@@ -39,3 +40,4 @@
     </tr>
     </tfoot>
 </table>
+</div>

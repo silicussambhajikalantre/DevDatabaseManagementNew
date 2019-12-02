@@ -6,4 +6,5 @@ export interface IUsers {
     firstName: string;
     lastName: string;
     token: string;
+    photoUrl: string;
 }

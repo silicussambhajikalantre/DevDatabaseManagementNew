@@ -1,22 +1,5 @@
-<div class="container-fluid"></div>
-<app-header></app-header>
-<section class="main-content-wrapper">
-         <nav class="navbar navbar-expand-sm ">
-            <!-- Links -->
-            <ul class="navbar-nav app-tabs">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/createUer">Create User</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/viewAll">View All Data</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/dataVizualization">Data Vizualization</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <span class="nav-link" (click)="signOut_1()">Logout</span>
-                </li> -->
-            </ul>
-          </nav>
-</section>
-<!-- <app-footer></app-footer> -->
+<div class="container-fluid p-0">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+</div>

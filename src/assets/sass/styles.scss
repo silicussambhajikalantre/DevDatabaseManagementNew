@@ -14,6 +14,14 @@ body{
 a{
   color:#1488C2 !important
 }
+.dashboard-wrapper{
+  box-shadow:5px 15px 19px -2px #888888;
+  background: #fff;
+  padding:25px;
+}
+.mlr-35{
+  margin:0 35px;
+}
 
 // .form-control-placeholder {
 //   position: absolute;
@@ -55,10 +63,10 @@ label 				 {
   color:#999; 
   font-size:14px;
   font-weight:normal;
-  // position:absolute;
-  // pointer-events:none;
-  // left:5px;
-  // top:10px;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
   transition:0.2s ease all; 
   -moz-transition:0.2s ease all; 
   -webkit-transition:0.2s ease all;
