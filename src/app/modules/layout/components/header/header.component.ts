@@ -21,9 +21,9 @@ export class HeaderComponent implements OnInit {
     this.logedInUserName = localStorage.fullName;
   }
   signOut_1(): void {
-   
-    this.getAuthenticationService.isLoggedOut(JSON.parse(localStorage.withGoogle));
-    this.router.navigate(['login', {logout: 't$4fj3kd)k,dmn'}]);
+    this.router.navigate(['/login'], { queryParams: { logutValue: 'Sambhaji' } });
+    //this.getAuthenticationService.isLoggedOut(JSON.parse(localStorage.withGoogle));
+    
   }
 
   

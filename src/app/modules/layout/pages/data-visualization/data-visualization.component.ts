@@ -42,9 +42,10 @@ export class DataVisualizationComponent implements OnInit {
       { data: [], label: 'Series' }
   ];
   ngOnInit() {
-    for ( let i = 1; i <= 10; i++ ) {
+    for ( let i = 1; i <= 100; i++ ) {
       this.mayBe(i);
     }
+    console.log(this.wholeArray);
   }
   getUser(){
     this.getUsersService.getAllUsers()
@@ -71,12 +72,16 @@ export class DataVisualizationComponent implements OnInit {
     } else {
       this.updateDataArray = [];
       if (!checkedValue) {
-        this.updateDataArray = this.dataArray.filter(element => (element.Year == year));        
-      }else {
-        this.updateDataArray = this.dataArray.filter(element => (element.Year == year));
+        this.updateDataArray = this.dataArray.filter(element => (element.Year === year));
+      } else {
+        this.updateDataArray = this.dataArray.filter(element => (element.Year === year));
       }
       this.dataArray = this.dataArray.filter(element => (element.Year !== year));
-      this.dataArray.push({ Movies: this.updateDataArray[0].Movies, Series: this.updateDataArray[0].Series, Year :  this.updateDataArray[0].Year, Checkbox: checkedValue  });
+      this.dataArray.push({
+        Movies: this.updateDataArray[0].Movies,
+        Series: this.updateDataArray[0].Series,
+        Year :  this.updateDataArray[0].Year,
+        Checkbox: checkedValue  });
       this.setChart(this.dataArray);
     }
 
@@ -85,17 +90,13 @@ mayBe(year){
   this.getDataFromApi.getDataFromTMDB(year).then((response) => {
     response.json().then((data1) => {
 //        console.log(data1);
-        this.wholeArray.push(data1.results);
+        this.wholeArray.push.apply(this.wholeArray, data1.results);
     })
   })
   .catch(err => {
     console.log(err);
   });
-
-  console.log(this.wholeArray);
 }
-  
-
 
   setChart(dataArray){
     this.dataArray =  dataArray;
