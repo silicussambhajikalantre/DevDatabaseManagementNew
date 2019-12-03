@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   logedInUserName: string;
   private user: SocialUser;
   private loggedIn: boolean;
-  
+  defaultImage: string = "../../../../../assets/images/user-default-image.png";
 
 
   constructor(private getAuthenticationService: AuthenticationService, private router: Router, private authService: AuthService) { }

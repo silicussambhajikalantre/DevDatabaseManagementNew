@@ -7,7 +7,7 @@
           <div class="app-header-right bg-white">
               <div class="user-profile-widget d-flex align-items-center">
                   <div class="profile-photo mr-3">
-                      <img src='{{ user?.photoUrl }}'>
+                      <img width="90" height="90" src="{{ user?.photoUrl || defaultImage}}" />
                   </div>
                   <div class="user-details">
                       <p><strong>Hi {{ logedInUserName }}</strong></p> 
