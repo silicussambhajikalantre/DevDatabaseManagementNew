@@ -12,6 +12,7 @@ import { MoviesListComponent } from './pages/movies-list/movies-list.component';
 import { DataTableModule } from 'ng-angular8-datatable';
 import { MovieDetailsComponent } from './pages/movies-list/movie-details/movie-details.component';
 import { DataMappingComponent } from './pages/data-mapping/data-mapping.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     HeaderComponent, 
@@ -21,9 +22,11 @@ import { DataMappingComponent } from './pages/data-mapping/data-mapping.componen
     BarChartCheckboxComponent, 
     AlertComponent, 
     MoviesListComponent, 
+   
     MovieDetailsComponent, DataMappingComponent],
   imports: [
     CommonModule,
+    ModalModule.forRoot(),
     LayoutRoutingModule,
     ChartsModule,
     DataTableModule,

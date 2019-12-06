@@ -44,3 +44,30 @@
 
     }
 }
+
+.wheel{
+    animation: wheel 5s linear infinite  ;
+    transform-origin: center;
+    transform-box: fill-box;
+ 
+  
+}
+
+
+
+@keyframes wheel{
+    from{
+        transform:  rotateZ(0deg);
+      
+    }
+
+    to{
+        transform: rotateZ(20deg);
+        
+    }
+}
+
+#gear {
+  /* won't work in IE */
+  transform: translateX(100px) scale(0.5);
+}

@@ -3,7 +3,7 @@ import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Response, Http } from '@angular/http';
-import { IUsers } from '../interface/users';
+import { User } from '../interface/users';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 export interface GeResponse {
@@ -14,11 +14,11 @@ export interface GeResponse {
 export class GetUsersService {
   public apiUrl;
   constructor(private _http: HttpClient, private http: Http) { 
-    this.apiUrl = environment.apiUrl;
+    //this.apiUrl = environment.apiUrl;
   }
-    getAllUsers(): Observable<IUsers[]> {
+    getAllUsers(): Observable<User[]> {
         return this.http.get(`${this.apiUrl}/api/read.php`).pipe(
-            map((response: Response) => <IUsers[]>response.json()));
+            map((response: Response) => <User[]>response.json()));
     }
 
     deleteUser (id: number): Observable<{}> {
@@ -56,7 +56,7 @@ export class GetUsersService {
       //  });
     }
 
-    register(user: IUsers) {
+    register(user: User) {
       return this.http.post(`${this.apiUrl}/users/register`, user);
   }
 }

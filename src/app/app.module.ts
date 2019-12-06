@@ -4,9 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
+
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, AuthService } from 'ng4-social-login';
 import { GetUsersService } from './core/services/get-users.service';
 import { AuthenticationService } from './core/services/authentication.service';
+
 import { GetDataFromApiService } from './core/services/get-data-from-api.service';
 import { AuthGuard } from './core/guards/auth.guard'
 import { AppRoutingModule } from './app-routing.module';;
@@ -15,6 +23,7 @@ import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { DataTableModule } from 'ng-angular8-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 const CONFIG = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -42,6 +51,11 @@ export function provideConfig() {
     AppRoutingModule,
     DataTableModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    //AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+  
   ],
   providers: [GetUsersService, AuthenticationService, AuthGuard, GetDataFromApiService, AuthService, {
     provide: AuthServiceConfig,
