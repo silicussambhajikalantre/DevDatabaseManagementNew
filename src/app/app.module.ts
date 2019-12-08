@@ -24,6 +24,7 @@ import { RegisterComponent } from './modules/register/register.component';
 import { DataTableModule } from 'ng-angular8-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 const CONFIG = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -39,7 +40,8 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+
   ],
   imports: [
     BrowserModule,

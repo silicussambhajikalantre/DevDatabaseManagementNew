@@ -23,15 +23,17 @@ import { Router } from "@angular/router";
 
 export class AuthenticationService {
   userData: any; // Save logged in user data
-
+  public apiUrl;
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private http: HttpClient
   ) {    
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
+    this.apiUrl = environment.apiUrl;
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
@@ -94,6 +96,21 @@ export class AuthenticationService {
     return (user !== null && user.emailVerified !== false) ? true : false;
   }
 
+  isLoggedIn_R(value, name, email) {
+   
+   
+    this.userData ={ 
+      displayName: name, 
+      emailVerified: value,
+      email: email
+    }
+
+
+    localStorage.setItem('user', JSON.stringify(this.userData));
+
+
+
+  }
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider());
@@ -137,5 +154,14 @@ export class AuthenticationService {
     })
   }
 
+  getAuth(formData): Observable<any> {
+    const email = formData.emailId;
+    const password = formData.password;
+    return this.http.post(`${this.apiUrl}/api/auth.php`, {
+      email,
+      password
+    }, { responseType: 'json'});
+  }
+  
 
 }

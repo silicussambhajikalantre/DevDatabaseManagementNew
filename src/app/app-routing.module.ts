@@ -13,7 +13,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register-user', component: RegisterComponent},
   { path: '', loadChildren: './modules/layout/layout.module#LayoutModule', canActivate: [AuthGuard]},
-  { path: '**', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/dataVizualization', pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuard] },
 
   
  // { path: 'forgot-password', component: ForgotPasswordComponent },

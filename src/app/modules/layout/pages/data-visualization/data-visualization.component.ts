@@ -23,7 +23,8 @@ export class DataVisualizationComponent implements OnInit {
   @Output()
   myData: EventEmitter<any> = new EventEmitter<any>();
   updateDataArray: any[];
-  constructor(private getUsersService: GetUsersService, private getDataFromApi: GetDataFromApiService) { }
+  constructor(private getUsersService: GetUsersService,
+    private getDataFromApi: GetDataFromApiService) { }
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -42,10 +43,10 @@ export class DataVisualizationComponent implements OnInit {
       { data: [], label: 'Series' }
   ];
   ngOnInit() {
-    for ( let i = 1; i <= 100; i++ ) {
+    for ( let i = 1; i <= 10; i++ ) {
       this.mayBe(i);
     }
-    console.log(this.wholeArray);
+    //console.log(this.wholeArray);
   }
   getUser(){
     this.getUsersService.getAllUsers()

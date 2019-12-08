@@ -13,8 +13,10 @@ export interface GeResponse {
 @Injectable()
 export class GetUsersService {
   public apiUrl;
+  public tmdbAPI;
   constructor(private _http: HttpClient, private http: Http) { 
-    //this.apiUrl = environment.apiUrl;
+    this.apiUrl = environment.apiUrl;
+    this.tmdbAPI = environment.tmdbAPI;
   }
     getAllUsers(): Observable<User[]> {
         return this.http.get(`${this.apiUrl}/api/read.php`).pipe(
@@ -46,17 +48,18 @@ export class GetUsersService {
       const phoneNumber = formData.phoneNumber;
 
     
-      // const url = `${this.apiUrl}/api/insert.php`;
-      // return this._http.post(url, {
-      //   yourName,
-      //   yourEmail,
-      //   userName,
-      //   gender,
-      //   password
-      //  });
+      const url = `${this.apiUrl}/api/registeredUser.php`;
+      return this._http.put(url, {
+        firstName,
+        lastName,
+        emailId,
+        userName,        
+        password,
+        phoneNumber
+       }, { responseType: 'json'});
     }
 
-    register(user: User) {
-      return this.http.post(`${this.apiUrl}/users/register`, user);
-  }
+  //   register(user: User) {
+  //     return this.http.post(`${this.apiUrl}/users/register`, user);
+  // }
 }

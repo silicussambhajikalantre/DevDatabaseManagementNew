@@ -13,6 +13,7 @@ export class MoviesListComponent implements OnInit {
   wholeArray = [];
  // data: any[];
   movideDetails;
+  isLoading: boolean;
   constructor( 
     private getDataFromApi: GetDataFromApiService, 
     config: NgbModalConfig, 
@@ -20,33 +21,35 @@ export class MoviesListComponent implements OnInit {
     private router : Router, 
     private route : ActivatedRoute) { }
 
-  ngOnInit() {
-    debugger;
+  ngOnInit() {    
+    this.isLoading = true;
     if(this.wholeArray.length === 0){
-      for ( let i = 1; i <= 100; i++ ) {
-        this.mayBe(i);
+      for ( let i = 1; i <= 20; i++ ) {
+        this.getMovieList(i);
       }
       // const id = this.route.snapshot.paramMap.get("id");
 
       // console.log(id);
     }
     this.data = this.wholeArray;
-  }
-  movieDetails(id){
-    this.getDataFromApi.myMethod(this.data);
-    this.movideDetails = this.wholeArray.find(element => element.id === id);
-    this.router.navigate(['movie-list/', id]);
- 
-  }
-  mayBe(page){
+  }  
+  getMovieList(page){
     this.getDataFromApi.getDataFromTMDB(page).then((response) => {
-      response.json().then((data1) => {
-  //        console.log(data1);
+      response.json().then((data1) => {  
+          this.isLoading = true;
           this.wholeArray.push.apply(this.wholeArray, data1.results);
+          this.isLoading = false;
       })
     })
     .catch(err => {
       console.log(err);
     });
+  }
+  movieDetails(id){
+    this.getDataFromApi.myMethod(this.data);
+    this.movideDetails = this.wholeArray.find(element => element.id === id);     
+  }
+  backToListDataF(event){
+    this.movideDetails = event;
   }
 }

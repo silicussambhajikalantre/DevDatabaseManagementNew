@@ -1,1 +1,47 @@
-dd
+<section class="images inner" *ngIf="movieDetails">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="detaisHeader text-right">
+                    <button (click)="backToList()" type="button" class="btn btn-primary">Back</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="poster">
+                <div class="image_content">
+                    <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{movideDetailsGet.poster_path}}"
+                        alt="{{movideDetailsGet.title}}" />
+                </div>
+            </div>
+
+            <div class="header_poster_wrapper">
+                <section class="header poster">
+                    <div class="title" dir="auto">
+                        <h1 class="15">{{movieDetails.title}} 
+                            <span class="release_date">({{movieDetails.release_date | date : 'yyyy'}})</span></h1>
+                    </div>
+                    <div class="header_info">
+                        <h3 dir="auto">Overview</h3>
+                        <div class="overview" dir="auto">
+                            <p>{{movieDetails.overview}}</p>
+                        </div>
+                        <h3 dir="auto" class="featured">Box Office Collection and Budget</h3>
+                        <table class="table">
+                            <tr>
+                                <th>Movie Budget</th>
+                                <th>Box Office Collection</th>
+                            </tr>
+                            <tr>
+                                <td>{{ movieDetails.budget }}</td>
+                                <td>{{ movieDetails.revenue}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-loader *ngIf="isLoading"></app-loader>

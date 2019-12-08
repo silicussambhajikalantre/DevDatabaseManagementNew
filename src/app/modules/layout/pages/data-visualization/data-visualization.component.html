@@ -8,13 +8,11 @@
           [plugins]="barChartPlugins"
           [legend]="barChartLegend"
           [chartType]="barChartType">
-        </canvas>
-        <div *ngIf="barLoading" class="loader">
-          <h2>Loading...</h2>
-        </div>
+        </canvas>        
   </div>      
 
 <app-bar-chart-checkbox (checkBoxCheck)="getCheckBoxData($event)"></app-bar-chart-checkbox>
+<app-most-popular-movies></app-most-popular-movies>
 </div>
       
 </div>

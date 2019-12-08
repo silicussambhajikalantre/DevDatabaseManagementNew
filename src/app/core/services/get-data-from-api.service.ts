@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Response, Http } from '@angular/http';
 import { Observable, Subject } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import "rxjs/Rx";
 @Injectable()
 export class GetDataFromApiService {
   myMethod$: Observable<any>;
@@ -33,9 +35,21 @@ export class GetDataFromApiService {
       getDataFromTMDB(page: number) {
         return fetch("https://api.themoviedb.org/3/discover/movie?api_key=6abdf9da1cf92c44b3fb376daaf55867&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page="+page);
         }
-
+      getSingleMovieDetail(movieId: number) {
+        return fetch("https://api.themoviedb.org/3/movie/"+movieId+"?api_key=6abdf9da1cf92c44b3fb376daaf55867&language=en-US");
+      }
+      // getMostPopularMovies(week:) {
+      //   return fetch("https://api.themoviedb.org/3/movie/week?api_key=6abdf9da1cf92c44b3fb376daaf55867&language=en-US");
+      // }
+      getMostPopularMovies(startDate, endDate, pageNo): Observable<any> {
+        return this.http.get(
+          'https://api.themoviedb.org/3/discover/movie?api_key=6abdf9da1cf92c44b3fb376daaf55867&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page='+pageNo+'&primary_release_date.gte='+startDate+'&primary_release_date.lte='+endDate).map((response: Response) => {
+            return response.json();
+        })
+        
+      }
         myMethod(data) {
-          console.log(data);
+          
           this.myMethodSubject.next(data);
       }
 

@@ -66,16 +66,16 @@ export class LoginComponent implements OnInit {
   }
  
   onSubmit() {
-    // this._auth.getAuth(this.loginForm.value).subscribe(data => {
-    //   if (data.Success) {
-    //     this._auth.isLoggedIn(data.Success, data.name, data.email, false, data.photoUrl);
-    //     //this.router.navigate(['dataVizualization']);
-    //   } else {
-    //     this._auth.isLoggedIn(data.Success, data.name, data.email, false, data.photoUrl);
-    //     this.errorMsg = data.Message;
-    //     this.isErrorMsg = data.Success;
-    //   }
-    // });
+    this.authService.getAuth(this.loginForm.value).subscribe(data => {
+      if (data.Success) {
+        this.authService.isLoggedIn_R(data.Success, data.FName, data.EmailID);
+        this.router.navigate(['dataVizualization']);
+      } else {
+        this.authService.isLoggedIn_R(data.Success, data.FName, data.EmailID);
+        this.errorMsg = data.Message;
+        this.isErrorMsg = data.Success;
+      }
+    });
   }
   signIn() {
     this.userName = ''; 

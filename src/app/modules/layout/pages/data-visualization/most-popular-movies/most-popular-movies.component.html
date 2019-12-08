@@ -1,0 +1,19 @@
+<!-- <pre>{{mostPopularMovies | json }}</pre> -->
+
+
+<div>
+    <div>
+      <div style="display: block; width: 600px;margin: 0px auto;" > 
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType" *ngIf="mostPopularMovies">
+        </canvas>
+      </div>
+    
+    </div>
+  </div>
+<app-loader *ngIf="isLoading"></app-loader>

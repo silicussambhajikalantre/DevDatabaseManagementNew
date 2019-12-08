@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
   loading = false;
   submitted = false;
   showMainContent: Boolean = true;
+  errorMsg: string;
+  isErrorMsg: any;
 
   
  
@@ -65,17 +67,13 @@ export class RegisterComponent implements OnInit {
           return;
       }
 
-      this.loading = true;
-      this.userService.register(this.newInsertUsers.value)
-          .pipe(first())
-          .subscribe(
-              data => {
-                  this.AlertService.success('Registration successful', true);
-                  this.router.navigate(['']);
-              },
-              error => {
-                  this.AlertService.error(error);
-                  this.loading = false;
-              });
+      this.userService.newInsertUsers(this.newInsertUsers.value)
+      .subscribe(data => {
+      
+        this.errorMsg = data['Message'];
+        this.isErrorMsg = data['Success'];
+        console.log(data);
+       
+       });
   }
 }
