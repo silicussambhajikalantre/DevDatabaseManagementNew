@@ -54,8 +54,10 @@ export class HeaderComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.logedInUserEmail = localStorage.emailId;
-    this.logedInUserName = localStorage.fullName;
+    //this.logedInUserEmail = localStorage.emailId;
+    this.logedInUserEmail = JSON.parse(localStorage.user).email;
+    this.logedInUserName = JSON.parse(localStorage.user).displayName;
+    this.defaultImage = JSON.parse(localStorage.user).photoUrl;
 
     this.authService.authState.subscribe((user) => {
       this.user = user;

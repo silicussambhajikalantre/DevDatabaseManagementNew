@@ -48,3 +48,4 @@ package-lock.json
 package-lock.json
 src/environments/environment.ts
 package.json
+angular-php-app/backend/api/database.php

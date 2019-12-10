@@ -7,7 +7,7 @@
           <div class="app-header-right bg-white">
               <div class="user-profile-widget d-flex align-items-center">
                   <div class="profile-photo mr-3">
-                      <img src="{{ user?.photoUrl || defaultImage }}"/>
+                      <img src="{{ defaultImage }}"/>
                    
                   </div>
                   <div class="user-details">
@@ -26,7 +26,7 @@
                       <div class="modal-body">
                           <div class="profile-photo text-center mr-3 mb-3">
                               <span class="active-user"></span>
-                              <img src="{{ user?.photoUrl || defaultImage }}" />
+                              <img src="{{ defaultImage }}" />
                           </div>
                           <div class="user-details text-center">
                               <h5><strong> {{ logedInUserName }}</strong></h5> 
@@ -64,6 +64,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link"[routerLinkActive]="['active']"  routerLink="/dataVizualization">Data Vizualization</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"[routerLinkActive]="['active']"  routerLink="/datamapping">Data Mapping</a>
           </li>
           <li class="nav-item">
         <button (click)="signOut()">Logout</button>
